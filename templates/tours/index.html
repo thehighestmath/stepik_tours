@@ -1,20 +1,14 @@
 {% extends 'tours/base.html' %}
 {% block main %}
     <!-- HERO -->
-    <style>
-        .stroke {
-            -webkit-text-stroke-width: 1px;
-            -webkit-text-stroke-color: #f800ff;
-        }
-    </style>
     <section class="jumbotron text-center mt-4"
             {# previous background 'https://place-hold.it/1600x300' #}
              style="
-                     background: url({{ tours.0.picture }}) no-repeat;
+                     background: url('https://place-hold.it/1600x300') no-repeat;
                      background-position: center center;
                      ">
-        <h1 class="display-4 stroke">Всякие туры</h1>
-        <p class="lead stroke">Для тех, кого отвлекают дома</p>
+        <h1 class="display-4">Всякие туры</h1>
+        <p class="lead">Для тех, кого отвлекают дома</p>
         <p class="mt-5 w-50 mx-auto stroke">Лучшие направления,где никто не будет вам мешать сидеть на берегу и изучать
             программирование, дизайн, разработку игр и управление продуктами</p>
     </section>

@@ -1,68 +1,22 @@
 {% extends 'tours/base.html' %}
 {% block main %}
-    <h1 class="display-5 mt-4">Летим из Новосибирска</h1>
-    <p class="mb-4">Найдено 15 туров, от 26 000 до 84 600 и от 4 ночей до 15 ночей</p>
+    <h1 class="display-5 mt-4">Летим {{ departure }}</h1>
+    <p class="mb-4">Найдено {{ tours_info.count }} туров,
+        от {{ tours_info.start_price }} до {{ tours_info.end_price }}
+        и от {{ tours_info.start_night }} ночей до {{ tours_info.end_night }} ночей</p>
     <!-- CARDS -->
     <div class="row mt-5">
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">Hotel title</h2>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">Hotel title</h2>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">Hotel title</h2>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">Hotel title</h2>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">Hotel title</h2>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">Hotel title</h2>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
+        {% for tour in tours %}
+            <div class="col-4">
+                <div class="card mb-4">
+                    <img src="{{ tour.picture }}" class="card-img-top img-fluid" alt="">
+                    <div class="card-body">
+                        <h2 class="h5 card-title">{{ tour.title }}</h2>
+                        <p class="card-text">{{ tour.description }}</p>
+                        <a href="/tour/{{ tour.id }}" class="btn btn-sm btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

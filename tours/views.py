@@ -5,6 +5,7 @@ from random import seed, randint
 
 # Create your views here.
 def main_view(request):
+    seed()
     tours = []
     while len(tours) != 6:
         index = randint(1, len(dataset.tours))
@@ -17,16 +18,35 @@ def main_view(request):
 
 
 def departure_view(request, departure):
+    tours = []
+    price = []
+    nights = []
+    for i in dataset.tours:
+        tour = dataset.tours[i]
+        if tour['departure'] == departure:
+            tours.append(tour)
+            price.append(tour['price'])
+            nights.append(tour['nights'])
     return render(request, 'tours/departure.html', {
-        'departures': dataset.departures
+        'departures': dataset.departures,
+        'departure': dataset.departures[departure],
+        'tours': tours,
+        'tours_info': {
+            'count': len(tours),
+            'start_price': min(price),
+            'end_price': max(price),
+            'start_night': min(nights),
+            'end_night': max(nights),
+        }
     })
 
 
 def tour_view(request, id):
     tour = dataset.tours.get(id)
     print(tour)
-    tour['stars'] = '★' * int(tour['stars'])
+    # tour['stars'] = '★' * int(tour['stars'])
     return render(request, 'tours/tour.html', {
         'departures': dataset.departures,
-        'tour': tour
+        'tour': tour,
+        'departure': dataset.departures[tour['departure']],
     })
