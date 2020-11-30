@@ -14,6 +14,9 @@ def main_view(request):
     return render(request, 'tours/index.html', {
         'departures': dataset.departures,
         'tours': tours,
+        'title': dataset.title,
+        'subtitle': dataset.subtitle,
+        'description': dataset.description,
     })
 
 
@@ -43,8 +46,6 @@ def departure_view(request, departure):
 
 def tour_view(request, id):
     tour = dataset.tours.get(id)
-    print(tour)
-    # tour['stars'] = '★' * int(tour['stars'])
     return render(request, 'tours/tour.html', {
         'departures': dataset.departures,
         'tour': tour,
