@@ -3,3 +3,8 @@
         display: flex;
     }
 }
+
+.card .card-block {
+    height: 200px;
+    overflow: auto;
+}

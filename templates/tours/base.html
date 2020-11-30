@@ -6,6 +6,8 @@
     <title>Stepik Travel</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'tours/css/styles.css' %}">
 </head>
 
 <body>
@@ -19,9 +21,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% for link, city in departures.items %}
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == "/departure/"|add:link %}active{% endif %}" href="/departure/{{ link }}">{{ city }}</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == "/departure/"|add:link %}active{% endif %}"
+                           href="/departure/{{ link }}">{{ city }}</a>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
