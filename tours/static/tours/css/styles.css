@@ -1,0 +1,10 @@
+@media (min-width: 1000px) {
+    #box {
+        display: flex;
+    }
+}
+
+.card .card-block {
+    height: 200px;
+    overflow: auto;
+}
